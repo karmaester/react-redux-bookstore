@@ -5,8 +5,8 @@ import BookForm from './components/BookForm';
 function App() {
   return (
     <div>
-      <BookList />
       <BookForm />
+      <BookList />
     </div>
   );
 }
