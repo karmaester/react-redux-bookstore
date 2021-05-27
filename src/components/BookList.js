@@ -7,7 +7,7 @@ import Book from './Book';
 const BookList = ({ books }) => {
   console.log(books);
   return (
-    <div>
+    <div className="container">
       <h1 className="text-center">Center</h1>
       <table className="table table-striped">
         <thead>
