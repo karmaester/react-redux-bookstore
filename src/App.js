@@ -4,7 +4,8 @@ import BookForm from './components/BookForm';
 
 function App() {
   return (
-    <div>
+    <div className="container text-center">
+      <h1>React Redux Bookstore</h1>
       <BookForm />
       <BookList />
     </div>
