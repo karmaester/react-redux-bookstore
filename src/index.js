@@ -4,6 +4,22 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './store';
 import reportWebVitals from './reportWebVitals';
+import { createBookAction } from './actions';
+
+const initialState = [
+  {
+    id: 0,
+    title: 'title one',
+    category: 'title one',
+  },
+  {
+    id: 1,
+    title: 'title two',
+    category: 'title two',
+  },
+];
+
+initialState.map((book) => store.dispatch(createBookAction(book)));
 
 ReactDOM.render(
   <React.StrictMode>

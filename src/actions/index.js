@@ -4,6 +4,6 @@ export const createBookAction = () => ({
   type: CREATE_BOOK,
 });
 
-export const cremoveBookAction = () => ({
+export const removeBookAction = () => ({
   type: REMOVE_BOOK,
 });

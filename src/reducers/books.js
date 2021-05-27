@@ -1,17 +1,6 @@
 import { CREATE_BOOK, REMOVE_BOOK } from '../actions/actionTypes';
 
-const initialState = [
-  {
-    id: 0,
-    title: 'title one',
-    category: 'title one',
-  },
-  {
-    id: 1,
-    title: 'title two',
-    category: 'title two',
-  },
-];
+const initialState = [];
 
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
