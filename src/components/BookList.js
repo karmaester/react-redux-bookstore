@@ -2,11 +2,23 @@ import React from 'react';
 
 const BookList = () => (
   <div>
-    <ul>
-      <li>Id</li>
-      <li>Title</li>
-      <li>Category</li>
-    </ul>
+    <h1 className="text-center">Center</h1>
+    <table className="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Book ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ID-1</td>
+          <td>Title One</td>
+          <td>Category One</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 );
 
