@@ -1,11 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './App';
+import store from './store';
 import reportWebVitals from './reportWebVitals';
+import { createBookAction } from './actions';
+
+const uniqid = require('uniqid');
+
+const initialState = [
+  {
+    id: uniqid.process(),
+    title: 'title one',
+    category: 'title one',
+  },
+  {
+    id: uniqid.process(),
+    title: 'title two',
+    category: 'title two',
+  },
+];
+
+initialState.map((book) => store.dispatch(createBookAction(book)));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
