@@ -3,10 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
-import { removeBookAction } from '../actions';
+import { removeBookAction, filterBook } from '../actions';
 import Filter from '../components/Filter';
 
-const BookList = ({ books, removeBook }) => {
+const BookList = ({ books, removeBook, filterCategory }) => {
   const handleDelete = (id) => {
     console.log(id);
     removeBook(id);
@@ -14,6 +14,15 @@ const BookList = ({ books, removeBook }) => {
 
   const handleFilter = (e) => {
     console.log(e.target.value);
+    filterBook(e.target.value);
+  };
+
+  const filteredBooks = () => {
+    if (filterCategory !== 'All') {
+      return books.filter((book) => book.category.toUpperCase() === filterCategory.toUpperCase());
+    }
+
+    return books;
   };
 
   return (
@@ -29,7 +38,7 @@ const BookList = ({ books, removeBook }) => {
           </tr>
         </thead>
         <tbody>
-          {books.map((book) => (
+          {filteredBooks().map((book) => (
             <Book key={book.id} book={book} onClick={handleDelete} />
           ))}
         </tbody>
@@ -41,10 +50,12 @@ const BookList = ({ books, removeBook }) => {
 BookList.propTypes = {
   books: PropTypes.array.isRequired,
   removeBook: PropTypes.func.isRequired,
+  filterCategory: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   books: state.books,
+  filterCategory: state.filter,
 });
 
 const mapDispatchToProps = (dispatch) => {
