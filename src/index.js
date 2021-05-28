@@ -6,14 +6,16 @@ import store from './store';
 import reportWebVitals from './reportWebVitals';
 import { createBookAction } from './actions';
 
+const uniqid = require('uniqid');
+
 const initialState = [
   {
-    id: 0,
+    id: uniqid.process(),
     title: 'title one',
     category: 'title one',
   },
   {
-    id: 1,
+    id: uniqid.process(),
     title: 'title two',
     category: 'title two',
   },
