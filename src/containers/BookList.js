@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { removeBookAction } from '../actions';
 
-const BookList = ({ books }) => {
+const BookList = ({ books, removeBook }) => {
   const handleDelete = (id) => {
     console.log(id);
-    removeBookAction(id);
+    removeBook(id);
   };
 
   return (
@@ -34,10 +34,17 @@ const BookList = ({ books }) => {
 
 BookList.propTypes = {
   books: PropTypes.array.isRequired,
+  removeBook: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   books: state.books,
 });
 
-export default connect(mapStateToProps, { removeBookAction })(BookList);
+const mapDispatchToProps = (dispatch) => {
+  const removeBook = (id) => dispatch(removeBookAction(id));
+
+  return { removeBook };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
