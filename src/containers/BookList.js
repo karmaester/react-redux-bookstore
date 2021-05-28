@@ -1,33 +1,32 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { removeBookAction, filterBook } from '../actions';
-import Filter from '../components/Filter';
+import Filter from '../components/CategoryFilter';
 
-const BookList = ({ books, removeBook, filterCategory }) => {
+const BookList = ({ books, filtered, removeBook }) => {
   const handleDelete = (id) => {
-    console.log(id);
     removeBook(id);
   };
 
-  const handleFilter = (e) => {
-    console.log(e.target.value);
-    filterBook(e.target.value);
+  const dispatch = useDispatch();
+  const handleFilterChange = (category) => {
+    dispatch(filterBook({ category: category.cat }));
   };
 
   const filteredBooks = () => {
-    if (filterCategory !== 'All') {
-      return books.filter((book) => book.category.toUpperCase() === filterCategory.toUpperCase());
+    if (filtered === 'All' || filtered.category === '') {
+      return books;
     }
-
-    return books;
+    return books.filter((book) => filtered.category === book.category);
   };
 
   return (
     <div className="container">
-      <Filter handleFilter={handleFilter} />
+      <Filter handleFilter={handleFilterChange} />
       <table className="table table-striped">
         <thead>
           <tr>
@@ -50,12 +49,12 @@ const BookList = ({ books, removeBook, filterCategory }) => {
 BookList.propTypes = {
   books: PropTypes.array.isRequired,
   removeBook: PropTypes.func.isRequired,
-  filterCategory: PropTypes.string.isRequired,
+  filtered: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   books: state.books,
-  filterCategory: state.filter,
+  filtered: state.filter,
 });
 
 const mapDispatchToProps = (dispatch) => {

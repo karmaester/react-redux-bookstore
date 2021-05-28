@@ -35,7 +35,6 @@ const BookForm = ({ createBook }) => {
     }
     const book = { id: uniqid.process(), title, category };
     createBook(book);
-    console.log(title, category);
 
     setTitle('');
     setCategory('');
