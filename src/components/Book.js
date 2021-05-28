@@ -13,7 +13,7 @@ const Book = ({ book, onClick }) => {
         <td>{category}</td>
         <td>
           <button type="button" key="id" className="btn" onClick={() => onClick(id)}>
-            <BsFillTrashFill />
+            <BsFillTrashFill className="text-danger" />
           </button>
         </td>
       </tr>
