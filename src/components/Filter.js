@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Filter = ({ handleFilter }) => {
-  const [cat, setCat] = useState('All');
+  const [cat, setCat] = useState('');
   const theClick = (e) => {
     e.preventDefault();
 
