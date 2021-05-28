@@ -1,33 +1,32 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { useDispatch, connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { removeBookAction, filterBook } from '../actions';
-import Filter from '../components/Filter';
+import Filter from '../components/CategoryFilter';
 
-const BookList = ({ books, removeBook }) => {
+const BookList = ({ books, filtered, removeBook }) => {
   const handleDelete = (id) => {
     removeBook(id);
   };
 
   const dispatch = useDispatch();
-  const fetchData = (category) => {
-    console.log(category);
-    dispatch(
-      filterBook({
-        category: category.cat,
-      }),
-    );
+  const handleFilterChange = (category) => {
+    dispatch(filterBook({ category: category.cat }));
   };
 
-  // const handleFilter = (e) => {
-  // console.log(e.target.value);
-  // };
+  const filteredBooks = () => {
+    if (filtered === 'All' || filtered.category === '') {
+      return books;
+    }
+    return books.filter((book) => filtered.category === book.category);
+  };
 
   return (
     <div className="container">
-      <Filter handleFilter={fetchData} />
+      <Filter handleFilter={handleFilterChange} />
       <table className="table table-striped">
         <thead>
           <tr>
@@ -38,7 +37,7 @@ const BookList = ({ books, removeBook }) => {
           </tr>
         </thead>
         <tbody>
-          {books.map((book) => (
+          {filteredBooks().map((book) => (
             <Book key={book.id} book={book} onClick={handleDelete} />
           ))}
         </tbody>
@@ -50,10 +49,12 @@ const BookList = ({ books, removeBook }) => {
 BookList.propTypes = {
   books: PropTypes.array.isRequired,
   removeBook: PropTypes.func.isRequired,
+  filtered: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   books: state.books,
+  filtered: state.filter,
 });
 
 const mapDispatchToProps = (dispatch) => {
