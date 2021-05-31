@@ -49,7 +49,7 @@ const BookList = ({ books, filtered, removeBook }) => {
 BookList.propTypes = {
   books: PropTypes.array.isRequired,
   removeBook: PropTypes.func.isRequired,
-  filtered: PropTypes.string.isRequired,
+  filtered: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
