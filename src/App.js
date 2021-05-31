@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="container text-center">
+      <div className="container">
         <BookList />
         <BookForm />
       </div>
