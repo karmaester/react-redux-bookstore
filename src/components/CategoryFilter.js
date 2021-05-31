@@ -6,7 +6,7 @@ const Filter = ({ handleFilter }) => {
   const theClick = (e) => {
     e.preventDefault();
 
-    handleFilter(cat);
+    handleFilter({ cat });
   };
   return (
     <div>
