@@ -41,9 +41,10 @@ const BookForm = ({ createBook }) => {
   };
 
   return (
-    <div className="container d-flex justify-content-center">
-      <form onSubmit={onSubmit}>
-        <div className="form-group align-self-center">
+    <div className="container">
+      <h1 className="form-title mt-3 text-secondary">Add a book</h1>
+      <form onSubmit={onSubmit} className="d-flex row">
+        <div className="form-group col-6">
           <input
             type="text"
             className="form-control p-2 m-3"
@@ -52,7 +53,7 @@ const BookForm = ({ createBook }) => {
             placeholder="Type the books title"
           />
         </div>
-        <div className="form-group align-self-center">
+        <div className="form-group d-flex col-6 align-items-center">
           <select
             className="form-select p-2 m-3"
             value={category}
@@ -65,7 +66,7 @@ const BookForm = ({ createBook }) => {
               </option>
             ))}
           </select>
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="btn btn-primary h-50">
             Submit
           </button>
         </div>
