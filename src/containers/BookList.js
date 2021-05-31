@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { removeBookAction } from '../actions';
+import Filter from '../components/Filter';
 
 const BookList = ({ books, removeBook }) => {
   const handleDelete = (id) => {
@@ -11,8 +12,13 @@ const BookList = ({ books, removeBook }) => {
     removeBook(id);
   };
 
+  const handleFilter = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div className="container">
+      <Filter handleFilter={handleFilter} />
       <table className="table table-striped">
         <thead>
           <tr>
