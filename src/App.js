@@ -1,14 +1,17 @@
-import './App.css';
+import './App.scss';
 import BookList from './containers/BookList';
 import BookForm from './containers/BookForm';
+import Header from './components/Header';
 
 function App() {
   return (
-    <div className="container text-center">
-      <h1>React Redux Bookstore</h1>
-      <BookForm />
-      <BookList />
-    </div>
+    <>
+      <Header />
+      <div className="container text-center">
+        <BookForm />
+        <BookList />
+      </div>
+    </>
   );
 }
 
