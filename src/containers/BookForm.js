@@ -59,8 +59,8 @@ const BookForm = ({ createBook }) => {
             onChange={(e) => setCategory(e.target.value)}
             aria-label="Default select example"
           >
-            {cat.map((x, i) => (
-              <option value={x} key={i}>
+            {cat.map((x) => (
+              <option value={x} key={x}>
                 {x}
               </option>
             ))}

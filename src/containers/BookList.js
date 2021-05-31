@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { useDispatch, connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -47,9 +45,9 @@ const BookList = ({ books, filtered, removeBook }) => {
 };
 
 BookList.propTypes = {
-  books: PropTypes.array.isRequired,
+  books: PropTypes.string.isRequired,
   removeBook: PropTypes.func.isRequired,
-  filtered: PropTypes.object.isRequired,
+  filtered: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
