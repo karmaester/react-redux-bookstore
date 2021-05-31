@@ -1,22 +1,28 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BsFillTrashFill } from 'react-icons/bs';
 
 const Book = ({ book, onClick }) => {
   const { id, title, category } = book;
   return (
     <>
-      <tr>
-        <td>{id}</td>
-        <td>{title}</td>
-        <td>{category}</td>
-        <td>
-          <button type="button" key="id" className="btn" onClick={() => onClick(id)}>
-            <BsFillTrashFill className="text-danger" />
-          </button>
-        </td>
-      </tr>
+      <div className="row mt-4">
+        <div className="col bg-white rounded-book-left">
+          <div className="catg bg-white">{category}</div>
+          <div className="book-title bg-white">{title}</div>
+          <ul className="d-flex bg-white align-items-center list-unstyled">
+            <li className="bg-white">Comments</li>
+            <li className="bg-white">
+              <button type="button" key="id" className="btn" onClick={() => onClick(id)}>
+                Remove
+              </button>
+            </li>
+            <li className="bg-white">Edit</li>
+          </ul>
+        </div>
+        <div className="col bg-white">Graphic</div>
+        <div className="col bg-white rounded-book-right">Chapter</div>
+      </div>
     </>
   );
 };

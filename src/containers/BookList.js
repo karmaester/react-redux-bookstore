@@ -23,23 +23,11 @@ const BookList = ({ books, filtered, removeBook }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <Filter handleFilter={handleFilterChange} />
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Book ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredBooks().map((book) => (
-            <Book key={book.id} book={book} onClick={handleDelete} />
-          ))}
-        </tbody>
-      </table>
+      {filteredBooks().map((book) => (
+        <Book key={book.id} book={book} onClick={handleDelete} />
+      ))}
     </div>
   );
 };

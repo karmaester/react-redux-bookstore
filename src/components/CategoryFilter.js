@@ -10,7 +10,7 @@ const Filter = ({ handleFilter }) => {
   };
   return (
     <div>
-      <select onChange={(e) => setCat(e.target.value)} onClick={theClick}>
+      <select onChange={(e) => setCat(e.target.value)} onClick={theClick} className="bg-white">
         <option value="">All</option>
         <option value="Action">Action</option>
         <option value="Biography">Biography</option>
