@@ -12,12 +12,12 @@ const initialState = [
   {
     id: uniqid.process(),
     title: 'title one',
-    category: 'title one',
+    category: 'Action',
   },
   {
     id: uniqid.process(),
     title: 'title two',
-    category: 'title two',
+    category: 'Biography',
   },
 ];
 
